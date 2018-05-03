@@ -1,6 +1,8 @@
 // Karma-Konfiguration für Unit-Tests
 
 module.exports = function (config) {
+    var locale = "de";
+
     config.set({
 
         // Basisverzeichnis relativ zu dieser Datei für "files:", "exclude:"
@@ -13,11 +15,14 @@ module.exports = function (config) {
         files: [
             // AngularJS und Libraries
             "vendor/jquery-*/jquery.min.js",
-            "vendor/angularjs-*/**/angular.min.js",
-            "vendor/angularjs-*/**/angular-*.min.js",
+            "vendor/angularjs-*/angular.min.js",
+            "vendor/angularjs-*/angular-*.min.js",
+            "vendor/angularjs-*/i18n/angular-locale_" + locale + ".js",
             "vendor/angularjs-*/angular-mocks.js",
             "vendor/angular-material-*/angular-material.min.js",
             "vendor/angular-ui-router-*/angular-ui-router.min.js",
+            "vendor/moment.js-*/moment.min.js",
+            "vendor/moment.js-*/locale/" + locale + ".js",
 
             // App-Code
             "app*.js",
