@@ -1,3 +1,4 @@
+#if($NAME.matches("[a-z0-9-]+"))
 #set($FACTORY = ${StringUtils.removeAndHump($NAME, "-")})
 "use strict";
 
@@ -19,3 +20,6 @@ app.factory("${FACTORY}", function() {
 
     return ${FACTORY};
 });
+#else
+// Factory-Dateinamen dürfen nur Kleinbuchstaben, Ziffern und '-' enthalten
+#end
