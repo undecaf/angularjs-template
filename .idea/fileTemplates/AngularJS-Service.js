@@ -8,5 +8,5 @@ app.service("${SERVICE}", function(${DS}log) {
 
 });
 #else
-// Servicce-Dateinamen dürfen nur Kleinbuchstaben, Ziffern und '-' enthalten
+// Service-Dateinamen dürfen nur Kleinbuchstaben, Ziffern und '-' enthalten
 #end
