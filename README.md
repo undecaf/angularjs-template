@@ -1,4 +1,4 @@
-#Vorlage für Projekte mit AngularJS und Angular Material
+# Vorlage für Projekte mit AngularJS und Angular Material
 
 Ausgangspunkt für Unterrichtsprojekte, der Folgendes bereitstellt:
 + Aktuelle lokale Kopien von AngularJS, UI-Router, Angular Material mit Icons und Fonts und Moment.js
