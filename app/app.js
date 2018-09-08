@@ -57,3 +57,17 @@ app.config(function($localeProvider, $mdDateLocaleProvider) {
     $mdDateLocaleProvider.msgCalendar = "Kalender";
     $mdDateLocaleProvider.msgOpenCalendar = "Kalender öffnen";
 });
+
+
+// Workaround, um irreführende Fehlermeldungen von UI-Router zu unterdrücken
+app.run(function($state, $trace, $uiRouter) {
+    $trace.enable(1);
+
+    var handler = $uiRouter.stateService.defaultErrorHandler();
+
+    $state.defaultErrorHandler(function(error) {
+        if (!error.detail || error.detail.message !== "Cannot read property 'call' of undefined") {
+            handler(error);
+        }
+    });
+});
