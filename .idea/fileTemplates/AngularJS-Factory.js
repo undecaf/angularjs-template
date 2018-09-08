@@ -6,12 +6,13 @@ app.factory("${FACTORY}", function() {
 
     function ${FACTORY}(template, modifier) {
     
-        // Properties und ihre Defaultwerte
+        // Schreibgeschützte Properties und ihre Defaultwerte
         let properties = {
         };
 
         Object.assign(this, properties, template, modifier);
 
+        // Properties schreibschützen
         Object.keys(properties).forEach(k => Object.defineProperty(this, k, { writable: false }));
         
         // Liefert eine neue Instanz dieses Objekts mit den angegebenen Änderungen
