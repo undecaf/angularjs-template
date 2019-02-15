@@ -19,6 +19,9 @@ app.factory("${FACTORY}", function() {
         this.variante = modifier => new ${FACTORY}(this, modifier);
     }
 
+    // Relativer Pfad im REST-API
+    ${FACTORY}.path = "${NAME}s";
+
     return ${FACTORY};
 });
 #else
