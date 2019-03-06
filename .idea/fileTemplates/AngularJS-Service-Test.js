@@ -1,15 +1,15 @@
 #if($NAME.matches(".+[.]spec"))
 #set($SERVICE_JS = $NAME.replaceAll("[.]spec$", ""))
 #set($SERVICE = ${StringUtils.removeAndHump($SERVICE_JS, "-")})
-#set($SERVICE_UNIT = $SERVICE + "Service")
+#set($SERVICE_NAME = $SERVICE + "Service")
 "use strict";
 
-expect("${SERVICE_UNIT}", () => {
-    var $SERVICE;
+describe("${SERVICE_NAME}", () => {
+    let $SERVICE;
 
     beforeEach(() => {
         module("???");
-        inject(_${SERVICE}_ => $SERVICE = _${SERVICE}_);
+        inject($SERVICE_NAME => $SERVICE = $SERVICE_NAME);
     });
 });
 #else

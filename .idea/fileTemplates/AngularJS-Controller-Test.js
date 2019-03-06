@@ -4,8 +4,8 @@
 #set($CONTROLLER_OBJ = $CONTROLLER_UNIT.substring(0, 1).toLowerCase() + $CONTROLLER_UNIT.substring(1))
 "use strict";
 
-expect("${CONTROLLER_UNIT}", () => {
-    var $CONTROLLER_OBJ;
+describe("${CONTROLLER_UNIT}", () => {
+    let $CONTROLLER_OBJ;
 
     beforeEach(() => {
         module("???");
