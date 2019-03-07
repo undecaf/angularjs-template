@@ -5,11 +5,11 @@
 "use strict";
 
 describe("${SERVICE_NAME}", () => {
-    let $SERVICE;
+    let $SERVICE_NAME;
 
     beforeEach(() => {
         module("???");
-        inject($SERVICE_NAME => $SERVICE = $SERVICE_NAME);
+        inject(_${SERVICE_NAME}_ => $SERVICE_NAME = _${SERVICE_NAME}_);
     });
 });
 #else
