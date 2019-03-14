@@ -11,6 +11,10 @@
     "karma-firefox-launcher": "^1.1",
     "karma-opera-launcher": "^1.0",
     "karma-safari-launcher": "^1.0",
-    "protractor": "^5.4"
+    "testcafe": "^1.1"
+  },
+
+  "scripts": {
+    "e2e-tests": "testcafe --speed 1.0 chromium e2e-tests/"
   }
 }
