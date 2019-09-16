@@ -1,7 +1,7 @@
 "use strict";
 
 // Einziges Modul dieser App und seine Abhängigkeiten
-var app = angular.module("Vorlage", [ "ngResource", "ngMessages", "ngLocale", "ngSanitize",
+let app = angular.module("Vorlage", [ "ngResource", "ngMessages", "ngLocale", "ngSanitize",
     "ngAnimate", "ngMaterial", "ui.router" ]);
 
 
@@ -26,7 +26,7 @@ app.config(function($mdThemingProvider) {
 
 // Datepicker auf AngularJS-Gebietsschema einstellen
 app.config(function($localeProvider, $mdDateLocaleProvider) {
-    var locale = $localeProvider.$get();
+    let locale = $localeProvider.$get();
 
     moment.locale(locale.id);
 
@@ -37,12 +37,12 @@ app.config(function($localeProvider, $mdDateLocaleProvider) {
     $mdDateLocaleProvider.firstDayOfWeek = locale.DATETIME_FORMATS.FIRSTDAYOFWEEK;
 
     $mdDateLocaleProvider.parseDate = function(dateString) {
-        var m = moment(dateString, "L", locale.id);
+        let m = moment(dateString, "L", locale.id);
         return m.isValid() ? m.toDate() : new Date(NaN);
     };
 
     $mdDateLocaleProvider.formatDate = function(date) {
-        var m = moment(date);
+        let m = moment(date);
         return m.isValid() ? m.format("L") : "";
     };
 
@@ -63,7 +63,7 @@ app.config(function($localeProvider, $mdDateLocaleProvider) {
 app.run(function($state, $trace, $uiRouter) {
     $trace.enable(1);
 
-    var handler = $uiRouter.stateService.defaultErrorHandler();
+    let handler = $uiRouter.stateService.defaultErrorHandler();
 
     $state.defaultErrorHandler(function(error) {
         if (!error.detail || error.detail.message !== "Cannot read property 'call' of undefined") {
