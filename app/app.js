@@ -59,6 +59,12 @@ app.config(function($localeProvider, $mdDateLocaleProvider) {
 });
 
 
+// Data-URIs für Bilder, Audio und Video zulassen
+app.config(function($compileProvider) {
+    $compileProvider.imgSrcSanitizationWhitelist(/^\s*((https?|ftp|file|blob):|data:(image|audio|video)\/)/);
+});
+
+
 // Workaround, um irreführende Fehlermeldungen von UI-Router zu unterdrücken
 app.run(function($state, $trace, $uiRouter) {
     $trace.enable(1);
