@@ -3,12 +3,20 @@
 /**
  * Dieses Service zeigt eine AngularJS-Komponente als modalen Dialog an.
  *
- * Die Komponente _muss_ folgendes Markup haben:
+ * Die Komponente _muss_ folgendes Markup enthalten:
  *   <div class="md-dialog-container">
  *       <md-dialog flex="...">
- *           ...
+ *           <md-dialog-content>
+ *               ....
+ *           </md-dialog-content>
+ *           <md-dialog-actions>
+ *               ....
+ *           </md-dialog-actions>
  *       </md-dialog>
  *   </div>
+ *
+ * Die Komponente platziert man nur ein _einziges Mal_, z.B. in index.html,
+ * und man macht sie mit "display: none" normalerweise unsichtbar.
  *
  * Um den Dialog anzuzeigen, ruft man (in beliebigen anderen Komponenten)
  * DialogService.show(...) auf. Diese Methode liefert ein Promise auf
