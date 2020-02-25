@@ -28,7 +28,7 @@
  * Mit DialogService.cancel(), Klicken außerhalb des Dialogs oder mit
  * ESC wird der Dialog geschlossen, und das Promise wird zurückgewiesen.
  */
-app.service("DialogService", function ($mdDialog, $log) {
+app.service("DialogService", function ($mdDialog, $rootScope, $log) {
 
     $log.debug("DialogService()");
 
@@ -40,7 +40,7 @@ app.service("DialogService", function ($mdDialog, $log) {
      *
      * Den Dialog kann man durch DialogService.submit(), DialogService.cancel(),
      * Klicken außerhalb des Dialogs oder mittels ESC-Taste schließen.
-     * 
+     *
      * Um das Standardverhalten des Dialogs abzuändern, kann man zusätzlich Optionen
      * übergeben, wie für $mdDialog.show() beschrieben.
      */
@@ -56,9 +56,8 @@ app.service("DialogService", function ($mdDialog, $log) {
             },
             options,
             {
-                parent: angular.element(document.body),
+                parent: component.parent()[0],
                 contentElement: component.children()[0],
-                controller: component.isolateScope().$ctrl
             });
 
         return $mdDialog
