@@ -3,51 +3,50 @@
 /**
  * Dieses Service zeigt eine AngularJS-Komponente als modalen Dialog an.
  *
- * Die Komponente _muss_ folgendes Markup enthalten:
- *   <div class="md-dialog-container">
- *       <md-dialog flex="...">
- *           <md-dialog-content>
- *               ....
- *           </md-dialog-content>
- *           <md-dialog-actions>
- *               ....
- *           </md-dialog-actions>
- *       </md-dialog>
- *   </div>
- *
- * Die Komponente platziert man nur ein _einziges Mal_, z.B. in index.html,
- * und man macht sie mit "display: none" normalerweise unsichtbar.
+ * Diese Komponente _muss_ folgendermaßen aufgebaut sein:
+ * 
+ * <md-dialog flex="...">
+ *     <md-dialog-content>
+ *         ....
+ *     </md-dialog-content>
+ *     <md-dialog-actions>
+ *         ....
+ *     </md-dialog-actions>
+ * </md-dialog>
  *
  * Um den Dialog anzuzeigen, ruft man (in beliebigen anderen Komponenten)
- * DialogService.show(...) auf. Diese Methode liefert ein Promise auf
- * das Schließen des Dialogs und die Eingabedaten.
+ * DialogService.show(...) mit dem Namen der Komponente auf. Diese Methode
+ * liefert ein Promise auf das Schließen des Dialogs und auf die Eingabedaten.
  *
  * Um den Dialog zu schließen und Eingabedaten zu übergeben, ruft man
  * in der Dialog-Komponente die Methode DialogService.submit(...) auf.
  *
- * Mit DialogService.cancel(), Klicken außerhalb des Dialogs oder mit
+ * Mit DialogService.cancel(), durch Klicken außerhalb des Dialogs oder mit
  * ESC wird der Dialog geschlossen, und das Promise wird zurückgewiesen.
  */
-app.service("DialogService", function ($mdDialog, $rootScope, $log) {
+app.service("DialogService", function ($mdDialog, $injector, $log) {
 
     $log.debug("DialogService()");
 
 
     /**
-     * Zeigt die durch den CSS-Selektor ausgewählte Komponente in einem modalen
-     * Dialog an und liefert ein Promise auf das Schließen des Dialogs und die
-     * Eingabedaten.
+     * Zeigt eine Komponente in einem modalen Dialog an und liefert
+     * ein Promise auf das Schließen des Dialogs und auf die Eingabedaten.
      *
-     * Den Dialog kann man durch DialogService.submit(), DialogService.cancel(),
-     * Klicken außerhalb des Dialogs oder mittels ESC-Taste schließen.
+     * Den Dialog kann man mit DialogService.submit(...), mit DialogService.cancel(),
+     * durch Klicken außerhalb des Dialogs oder mittels ESC-Taste schließen.
      *
      * Um das Standardverhalten des Dialogs abzuändern, kann man zusätzlich Optionen
      * übergeben, wie für $mdDialog.show() beschrieben.
      */
-    this.show = (componentSelector, options) => {
-        $log.debug("DialogService.show()", componentSelector, options);
+    this.show = (componentName, options) => {
+        $log.debug("DialogService.show()", componentName, options);
 
-        let component = angular.element(componentSelector);
+        // Komponentenkonfiguration ermitteln
+        let config;
+        $injector.invoke([componentName + "Directive", function(configArray) {
+            config = configArray[0];
+        }]);
 
         // Änderbare Optionen überschreiben, falls angegeben
         options = Object.assign(
@@ -56,8 +55,10 @@ app.service("DialogService", function ($mdDialog, $rootScope, $log) {
             },
             options,
             {
-                parent: component.parent()[0],
-                contentElement: component.children()[0],
+                template: config.template,
+                templateUrl: config.templateUrl,
+                controller: config.controller,
+                controllerAs: config.controllerAs,
             });
 
         return $mdDialog
