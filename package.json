@@ -1,17 +1,17 @@
 {
   "devDependencies": {
-    "jasmine-core": "~3.5",
+    "jasmine-core": "^3.7",
     "jasmine-spec-reporter": "^5.0",
-    "karma": "^6.3.2",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-edge-launcher": "^0.4.2",
-    "karma-firefox-launcher": "^2.1.0",
-    "karma-jasmine": "^3.1",
-    "karma-jasmine-html-reporter": "~1.5",
+    "karma": "^6.3",
+    "karma-chrome-launcher": "^3.1",
+    "karma-edge-launcher": "^0.4",
+    "karma-firefox-launcher": "^2.1",
+    "karma-jasmine": "^3.3",
+    "karma-jasmine-html-reporter": "^1.6",
     "karma-opera-launcher": "^1.0",
     "karma-safari-launcher": "^1.0",
-    "karma-spec-reporter": "^0.0.32",
-    "testcafe": "^1.8"
+    "karma-spec-reporter": "^0.0",
+    "testcafe": "^1"
   },
   "scripts": {
     "e2e-tests": "testcafe --speed 1.0 chromium e2e-tests/"
