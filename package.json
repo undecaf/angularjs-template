@@ -11,7 +11,7 @@
     "karma-opera-launcher": "^1.0",
     "karma-safari-launcher": "^1.0",
     "karma-spec-reporter": "^0.0",
-    "testcafe": "^1.14.2"
+    "testcafe": "^1.16.0"
   },
   "scripts": {
     "e2e-tests": "testcafe --speed 1.0 chromium e2e-tests/"
