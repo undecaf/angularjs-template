@@ -1,3 +1,5 @@
+## :warning: This repository is no longer being maintained and has been archived.
+
 # Vorlage für Projekte mit AngularJS und Angular Material
 
 Ausgangspunkt für Unterrichtsprojekte, der Folgendes bereitstellt:
